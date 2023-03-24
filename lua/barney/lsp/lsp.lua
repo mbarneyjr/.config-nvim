@@ -46,7 +46,6 @@ mason_lspconfig.setup_handlers({
   function(server_name)
     lspconfig[server_name].setup({
       capabilities = capabilities,
-      -- on_attach = on_attach,
       settings = server_settings[server_name],
     })
   end,

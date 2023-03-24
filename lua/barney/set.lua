@@ -23,3 +23,5 @@ vim.opt.colorcolumn = '120'
 
 vim.opt.completeopt = 'menuone,noselect'
 vim.opt.guicursor = 'a:blinkon100'
+
+vim.opt.clipboard = 'unnamedplus'
