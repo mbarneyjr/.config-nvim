@@ -1,5 +1,4 @@
 local on_attach = function(_, bufnr)
-  print('LSP: on_attach executed')
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = bufnr, desc = '[LSP] [R]e[n]ame' })
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = bufnr, desc = '[LSP] [C]ode [A]ction' })
 

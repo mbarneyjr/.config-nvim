@@ -10,13 +10,8 @@ require('packer').startup(function(use)
   use('wbthomason/packer.nvim')
 
   -- color theme
-  use({
-    'tomasiser/vim-code-dark',
-    branch = 'master',
-    config = function()
-      vim.cmd('colorscheme codedark')
-    end,
-  })
+  use('tomasiser/vim-code-dark')
+  use('haishanh/night-owl.vim')
 
   -- language support
   use({

@@ -9,7 +9,7 @@ end
 require('lualine').setup({
   options = {
     icons_enabled = false,
-    theme = 'codedark',
+    theme = 'auto',
     component_separators = '|',
     section_separators = '',
   },
