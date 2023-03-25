@@ -66,6 +66,24 @@ require('packer').startup(function(use)
   use('mbbill/undotree')
   use('ThePrimeagen/vim-be-good')
   use 'nvim-lualine/lualine.nvim'
+  use({
+    'folke/trouble.nvim',
+    config = function()
+      require('trouble').setup({
+        icons = false,
+        fold_open = 'v',
+        fold_closed = '>',
+        indent_lines = true,
+        signs = {
+          error = '[ERROR]',
+          warning = '[WARN]',
+          hint = '[HINT]',
+          information = '[INFO]',
+        },
+        use_diagnostic_signs = false,
+      })
+    end,
+  })
 
   if is_bootstrap then
     require('packer').sync()
