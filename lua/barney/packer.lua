@@ -48,6 +48,7 @@ require('packer').startup(function(use)
       'hrsh7th/cmp-nvim-lua',
     },
   })
+  use('tamago324/nlsp-settings.nvim')
 
   -- git integration
   use('lewis6991/gitsigns.nvim')

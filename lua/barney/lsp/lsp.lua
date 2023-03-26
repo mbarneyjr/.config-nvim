@@ -29,6 +29,14 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 local server_settings = require('barney.lsp.servers')
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+require('nlspsettings').setup({
+  config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
+  local_settings_dir = ".nlsp-settings",
+  local_settings_root_markers_fallback = { '.git' },
+  append_default_schemas = true,
+  loader = 'json',
+})
+
 require('mason').setup()
 null_ls.setup({
   debug = false,
