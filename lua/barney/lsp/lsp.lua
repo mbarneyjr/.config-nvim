@@ -55,6 +55,11 @@ mason_lspconfig.setup_handlers({
     lspconfig[server_name].setup({
       capabilities = capabilities,
       settings = server_settings[server_name],
+      on_attach = function(client, _)
+        if client.name == 'tsserver' then
+          client.server_capabilities.documentFormattingProvider = false
+        end
+      end,
     })
   end,
 })
