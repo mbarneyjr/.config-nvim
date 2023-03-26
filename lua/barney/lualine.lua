@@ -16,7 +16,7 @@ require('lualine').setup({
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { 'branch', },
-    lualine_c = { 'filename' },
+    lualine_c = { { 'filename', path = 1, file_status = true  } },
     lualine_x = { 'diagnostics' },
     lualine_y = { awsume_region },
     lualine_z = { awsume_profile },
