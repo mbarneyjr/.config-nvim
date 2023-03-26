@@ -1,4 +1,4 @@
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter.configs'.setup({
   -- A list of parser names, or 'all' (the five listed parsers should always be installed)
   ensure_installed = {
     'help',
@@ -32,10 +32,10 @@ require'nvim-treesitter.configs'.setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = '<leader><c-space>',
-      node_incremental = '<leader><c-space>',
-      scope_incremental = '<leader><c-s>',
-      node_decremental = '<leader><c-backspace>',
+      init_selection = '<c-{>',
+      node_incremental = '<c-{>',
+      scope_incremental = '<c-}>',
+      node_decremental = '<c-}>',
     },
   },
 
@@ -48,4 +48,4 @@ require'nvim-treesitter.configs'.setup {
     -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false
   },
-}
+})
