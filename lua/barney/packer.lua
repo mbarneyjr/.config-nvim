@@ -86,6 +86,7 @@ require('packer').startup(function(use)
       })
     end,
   })
+  use('akinsho/toggleterm.nvim')
 
   if is_bootstrap then
     require('packer').sync()
