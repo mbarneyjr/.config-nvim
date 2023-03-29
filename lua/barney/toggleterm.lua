@@ -9,5 +9,7 @@ require('toggleterm').setup({
 })
 
 vim.keymap.set('t', '<esc>', '<c-\\><c-n>')
-vim.keymap.set('n', '<c-t>', '<cmd>ToggleTerm direction=horizontal<cr>')
-vim.keymap.set('n', '<c-v>', '<cmd>ToggleTerm direction=vertical<cr>')
+vim.keymap.set('n', '<c-t>', function() return '<cmd>ToggleTerm direction=horizontal size=' .. vim.v.count .. '<cr>' end, { expr = true })
+vim.keymap.set('n', '<c-v>', function() return '<cmd>ToggleTerm direction=vertical size=' .. vim.v.count .. '<cr>' end, { expr = true })
+
+
