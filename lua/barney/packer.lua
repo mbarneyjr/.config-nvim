@@ -64,6 +64,7 @@ require('packer').startup(function(use)
       'nvim-lua/plenary.nvim'
     },
   })
+  use('nvim-tree/nvim-tree.lua')
   use('ThePrimeagen/harpoon')
   use('mbbill/undotree')
   use('ThePrimeagen/vim-be-good')
