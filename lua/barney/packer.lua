@@ -49,6 +49,9 @@ require('packer').startup(function(use)
     },
   })
   use('tamago324/nlsp-settings.nvim')
+  use('mfussenegger/nvim-dap')
+  use('jay-babu/mason-nvim-dap.nvim')
+  use('rcarriga/nvim-dap-ui')
 
   -- git integration
   use('lewis6991/gitsigns.nvim')
