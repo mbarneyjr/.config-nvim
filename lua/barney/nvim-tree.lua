@@ -24,6 +24,7 @@ require('nvim-tree').setup({
   },
 })
 
+require('nvim-tree.api').tree.toggle_hidden_filter()
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = require('nvim-tree.api').tree.open })
 
 -- create keymap for control+~ to toggle nvim-tree
