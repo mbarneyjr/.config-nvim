@@ -15,7 +15,16 @@ require('nvim-tree').setup({
   filters = {
     dotfiles = true,
   },
+  git = {
+    ignore = false
+  },
+  update_focused_file = {
+    enable = true,
+    update_cwd = true,
+  },
 })
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = require('nvim-tree.api').tree.open })
 
 -- create keymap for control+~ to toggle nvim-tree
 vim.api.nvim_set_keymap('n', '<C-`>', ':NvimTreeToggle<CR>', {})
