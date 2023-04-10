@@ -6,7 +6,10 @@ telescope.setup({
   defaults = {
     file_ignore_patterns = {
       'node_modules',
-      '^.git/',
+      '.git',
+      'bulid',
+      'dist',
+      'artifacts',
     },
     hidden = true,
     no_ignore = true,

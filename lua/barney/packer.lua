@@ -68,7 +68,14 @@ require('packer').startup(function(use)
       'nvim-lua/plenary.nvim'
     },
   })
-  use('nvim-tree/nvim-tree.lua')
+  use({
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v2.x',
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+    }
+  })
   use('ThePrimeagen/harpoon')
   use('mbbill/undotree')
   use('ThePrimeagen/vim-be-good')
