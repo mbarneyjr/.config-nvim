@@ -2,13 +2,13 @@ require('copilot').setup({
   panel = {
     enabled = true,
     auto_refresh = false,
-    keymap = {
-      jump_prev = '[[',
-      jump_next = ']]',
-      accept = '<CR>',
-      refresh = 'gr',
-      open = '<M-CR>'
-    },
+    -- keymap = {
+    --   jump_prev = '[[',
+    --   jump_next = ']]',
+    --   accept = '<CR>',
+    --   refresh = 'gr',
+    --   open = '<M-CR>'
+    -- },
     layout = {
       position = 'bottom', -- | top | left | right
       ratio = 0.4
@@ -19,12 +19,12 @@ require('copilot').setup({
     auto_trigger = true,
     debounce = 75,
     keymap = {
-      accept = '<C-y>',
+      accept = '<c-j>',
       accept_word = false,
       accept_line = false,
-      next = '<C-n>',
-      prev = '<C-p>',
-      dismiss = '<C-x>',
+      next = '<tab>',
+      prev = '<s-tab>',
+      dismiss = '<c-f>',
     },
   },
   filetypes = {

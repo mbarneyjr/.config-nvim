@@ -4,7 +4,7 @@ local mason_nvim_dap = require('mason-nvim-dap')
 mason_nvim_dap.setup({
   automatic_setup = true,
 })
-mason_nvim_dap.setup_handlers({})
+mason_nvim_dap.setup({})
 
 -- create a keymap to add a breakpoint
 vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'toggle [d]e[b]ugger breakpoint' })

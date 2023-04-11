@@ -11,11 +11,11 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, desc = '[LSP] Hover Documentation' })
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { buffer = bufnr, desc = '[LSP] Signature Documentation' })
+  vim.keymap.set('n', '<c-k>', vim.lsp.buf.signature_help, { buffer = bufnr, desc = '[LSP] Signature Documentation' })
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = '[LSP] [G]oto [D]eclaration' })
 
   -- Create a command `:Format` local to the LSP buffer
-  vim.keymap.set('n', '<C-f>', vim.lsp.buf.format, { buffer = bufnr, desc = '[LSP] [f]ormat document' })
+  vim.keymap.set('n', '<c-f>', vim.lsp.buf.format, { buffer = bufnr, desc = '[LSP] [f]ormat document' })
 end
 
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -42,13 +42,12 @@ null_ls.setup({
   debug = false,
 })
 mason_lspconfig.setup({})
-require('mason-null-ls').setup_handlers({
-  function (source_name, methods)
-    require('mason-null-ls.automatic_setup')(source_name, methods)
-  end,
-  stylua = function()
-    null_ls.register(null_ls.builtins.formatting.stylua)
-  end,
+require('mason-null-ls').setup({
+  handlers = {
+    stylua = function()
+      null_ls.register(null_ls.builtins.formatting.stylua)
+    end,
+  },
 })
 mason_lspconfig.setup_handlers({
   function(server_name)
