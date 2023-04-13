@@ -7,9 +7,11 @@ telescope.setup({
     file_ignore_patterns = {
       'node_modules',
       '.git',
-      'bulid',
+      'build',
+      'cdk.out',
       'dist',
       'artifacts',
+      '.venv',
     },
     hidden = true,
     no_ignore = true,
