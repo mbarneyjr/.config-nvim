@@ -43,11 +43,7 @@ null_ls.setup({
 })
 mason_lspconfig.setup({})
 require('mason-null-ls').setup({
-  handlers = {
-    stylua = function()
-      null_ls.register(null_ls.builtins.formatting.stylua)
-    end,
-  },
+  automatic_setup = true,
 })
 mason_lspconfig.setup_handlers({
   function(server_name)
