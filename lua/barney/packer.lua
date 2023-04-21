@@ -68,6 +68,8 @@ require('packer').startup(function(use)
       'nvim-lua/plenary.nvim'
     },
   })
+  use('ibhagwan/fzf-lua')
+  use({ 'junegunn/fzf', run = './install --bin', })
   use({
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',

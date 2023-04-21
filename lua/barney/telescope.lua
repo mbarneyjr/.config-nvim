@@ -1,6 +1,7 @@
 local telescope = require('telescope')
 local action_layout = require('telescope.actions.layout')
 local builtin = require('telescope.builtin')
+local fzf_lua = require('fzf-lua')
 
 telescope.setup({
   defaults = {
@@ -34,3 +35,4 @@ vim.keymap.set('n', '<leader>ff', function() builtin.find_files({ hidden = true 
 vim.keymap.set('n', '<leader>fs', builtin.live_grep, { desc = '[f]ind grep [S]earch' })
 vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = '[f]ind [g]it files' })
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[f]ind [d]iagnostics' })
+vim.keymap.set('n', '<c-P>', fzf_lua.files, { silent = true })
