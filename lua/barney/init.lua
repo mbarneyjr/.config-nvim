@@ -1,20 +1,27 @@
-require('barney.packer')
-require('barney.remap')
-require('barney.set')
-require('barney.completion')
-require('barney.lsp')
-require('barney.treesitter')
-require('barney.colorscheme')
-require('barney.lualine')
-require('barney.telescope')
-require('barney.harpoon')
-require('barney.undotree')
-require('barney.gitsigns')
-require('barney.trouble')
-require('barney.copilot')
-require('barney.toggleterm')
-require('barney.neo-tree')
-require('barney.dap')
-require('barney.comment')
-require('barney.autocommand')
-require('barney.scratch')
+for _, source in ipairs {
+  'barney.packer',
+  'barney.neoconf',
+  'barney.remap',
+  'barney.set',
+  'barney.which-key',
+  'barney.completion',
+  'barney.lsp',
+  'barney.treesitter',
+  'barney.colorscheme',
+  'barney.lualine',
+  'barney.telescope',
+  'barney.harpoon',
+  'barney.undotree',
+  'barney.gitsigns',
+  'barney.trouble',
+  'barney.copilot',
+  'barney.toggleterm',
+  'barney.neo-tree',
+  'barney.dap',
+  'barney.comment',
+  'barney.autocommand',
+  'barney.scratch',
+} do
+  local status_ok, fault = pcall(require, source)
+  if not status_ok then vim.api.nvim_err_writeln("Failed to load " .. source .. "\n\n" .. fault) end
+end

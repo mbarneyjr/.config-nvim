@@ -15,7 +15,6 @@ vim.opt.undofile = true
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
-vim.opt.termguicolors = false
 
 vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
@@ -26,5 +25,3 @@ vim.opt.guicursor = 'a:blinkon100'
 
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.splitright = true
-
--- vim.opt.autochdir = true

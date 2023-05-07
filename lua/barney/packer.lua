@@ -11,6 +11,7 @@ require('packer').startup(function(use)
 
   -- color theme
   use('tomasiser/vim-code-dark')
+  use('folke/tokyonight.nvim')
   use('haishanh/night-owl.vim')
 
   -- language support
@@ -28,12 +29,16 @@ require('packer').startup(function(use)
   use({
     'neovim/nvim-lspconfig',
     requires = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
-      'jose-elias-alvarez/null-ls.nvim',
-      'jay-babu/mason-null-ls.nvim',
-      'j-hui/fidget.nvim',
       'folke/neodev.nvim',
+      'j-hui/fidget.nvim',
+      'jay-babu/mason-null-ls.nvim',
+      'jay-babu/mason-nvim-dap.nvim',
+      'jose-elias-alvarez/null-ls.nvim',
+      'mfussenegger/nvim-dap',
+      'rcarriga/nvim-dap-ui',
+      'tamago324/nlsp-settings.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'williamboman/mason.nvim',
     },
   })
   use({
@@ -48,35 +53,55 @@ require('packer').startup(function(use)
       'hrsh7th/cmp-nvim-lua',
     },
   })
-  use('tamago324/nlsp-settings.nvim')
-  use('mfussenegger/nvim-dap')
-  use('jay-babu/mason-nvim-dap.nvim')
-  use('rcarriga/nvim-dap-ui')
 
   -- git integration
   use('lewis6991/gitsigns.nvim')
   use('tpope/vim-fugitive')
   use('tpope/vim-rhubarb')
 
+  -- which key
+  use('folke/which-key.nvim')
   -- misc plugins
+  use('folke/neoconf.nvim')
   use('terrortylor/nvim-comment')
   use({ 'zbirenbaum/copilot.lua' })
   use({
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
     requires = {
-      'nvim-lua/plenary.nvim'
+      'nvim-lua/plenary.nvim',
+      { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     },
   })
   use('ibhagwan/fzf-lua')
-  use({ 'junegunn/fzf', run = './install --bin', })
   use({
     'nvim-neo-tree/neo-tree.nvim',
     branch = 'v2.x',
     requires = {
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
+      {
+        's1n7ax/nvim-window-picker',
+        config = function()
+          require('window-picker').setup({
+            autoselect_one = true,
+            include_current = false,
+            filter_rules = {
+              bo = {
+                filetype = { 'neo-tree', 'neo-tree-popup', 'notify' },
+                buftype = { 'terminal', 'quickfix' },
+              },
+            },
+            other_win_hl_color = '#e35e4f',
+          })
+        end,
+      },
     }
+  })
+  use({
+    'NvChad/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end,
   })
   use('ThePrimeagen/harpoon')
   use('mbbill/undotree')

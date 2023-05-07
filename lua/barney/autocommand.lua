@@ -56,6 +56,5 @@ local function autorun_prompt()
 end
 
 vim.api.nvim_create_user_command('AutoRun', autorun, { nargs = '?' })
-vim.keymap.set('n', '<leader>ar', autorun_prompt, { silent = true })
-vim.keymap.set('n', '<leader>aR', autorun, { silent = true })
-
+vim.keymap.set('n', '<leader>ar', autorun_prompt, { silent = true, desc = 'autorun prompt' })
+vim.keymap.set('n', '<leader>aR', autorun, { silent = true, desc = 'toggle autorun' })

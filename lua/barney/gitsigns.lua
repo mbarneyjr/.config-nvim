@@ -21,6 +21,6 @@ require('gitsigns').setup {
       opts.buffer = bufnr
       vim.keymap.set(mode, l, r, opts)
     end
-    map('n', '<leader>gb', gs.toggle_current_line_blame)
+    map('n', '<leader>gb', gs.toggle_current_line_blame, { desc = 'toggle git blame' })
   end,
 }
