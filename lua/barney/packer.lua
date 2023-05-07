@@ -12,6 +12,7 @@ require('packer').startup(function(use)
   -- color theme
   use('tomasiser/vim-code-dark')
   use('folke/tokyonight.nvim')
+  use('tomasr/molokai')
   use('haishanh/night-owl.vim')
 
   -- language support
