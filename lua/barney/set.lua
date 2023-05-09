@@ -25,3 +25,6 @@ vim.opt.guicursor = 'a:blinkon100'
 
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.splitright = true
+
+vim.g.do_filetype_lua = true
+vim.g.did_load_filetypes = false

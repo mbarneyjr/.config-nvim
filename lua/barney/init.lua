@@ -6,6 +6,7 @@ for _, source in ipairs {
   'barney.which-key',
   'barney.completion',
   'barney.lsp',
+  'barney.filetypes',
   'barney.treesitter',
   'barney.colorscheme',
   'barney.lualine',

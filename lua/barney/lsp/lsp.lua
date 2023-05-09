@@ -45,6 +45,8 @@ mason_lspconfig.setup({})
 require('mason-null-ls').setup({
   automatic_setup = true,
   automatic_installation = true,
+  handlers = {},
+  ensure_installed = {},
 })
 mason_lspconfig.setup_handlers({
   function(server_name)

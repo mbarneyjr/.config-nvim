@@ -63,6 +63,15 @@ require('packer').startup(function(use)
   -- which key
   use('folke/which-key.nvim')
   -- misc plugins
+  use({
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup({})
+    end,
+    requires = {
+      'windwp/nvim-ts-autotag',
+    },
+  })
   use('folke/neoconf.nvim')
   use('terrortylor/nvim-comment')
   use({ 'zbirenbaum/copilot.lua' })
