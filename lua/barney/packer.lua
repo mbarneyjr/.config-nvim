@@ -64,12 +64,6 @@ require('packer').startup(function(use)
   use('folke/which-key.nvim')
   -- misc plugins
   use({
-    'anuvyklack/pretty-fold.nvim',
-    config = function()
-      require('pretty-fold').setup()
-    end,
-  })
-  use({
     'windwp/nvim-autopairs',
     config = function()
       require('nvim-autopairs').setup({})
