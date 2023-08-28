@@ -31,7 +31,7 @@ require('packer').startup(function(use)
     'neovim/nvim-lspconfig',
     requires = {
       'folke/neodev.nvim',
-      'j-hui/fidget.nvim',
+      { 'j-hui/fidget.nvim', tag = 'legacy' },
       'jay-babu/mason-null-ls.nvim',
       'jay-babu/mason-nvim-dap.nvim',
       'jose-elias-alvarez/null-ls.nvim',
@@ -63,6 +63,14 @@ require('packer').startup(function(use)
   -- which key
   use('folke/which-key.nvim')
   -- misc plugins
+  use({
+    'edluffy/hologram.nvim',
+    config = function()
+      require('hologram').setup({
+        auto_display = true,
+      })
+    end,
+  })
   use({
     'windwp/nvim-autopairs',
     config = function()

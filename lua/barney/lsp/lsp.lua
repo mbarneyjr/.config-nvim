@@ -31,7 +31,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 require('nlspsettings').setup({
   config_home = vim.fn.stdpath('config') .. '/nlsp-settings',
-  local_settings_dir = ".nlsp-settings",
+  local_settings_dir = '.nlsp-settings',
   local_settings_root_markers_fallback = { '.git' },
   append_default_schemas = true,
   loader = 'json',
@@ -41,6 +41,14 @@ require('mason').setup()
 null_ls.setup({
   debug = false,
 })
+local null_ls_sources = {
+    null_ls.builtins.diagnostics.eslint_d.with({
+        cwd = function(params)
+            return require('lspconfig.util').root_pattern('tsconfig.json')(params.bufname)
+        end,
+    }),
+}
+null_ls.register({ sources = null_ls_sources })
 mason_lspconfig.setup({})
 require('mason-null-ls').setup({
   automatic_setup = true,
