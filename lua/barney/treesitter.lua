@@ -53,3 +53,7 @@ require'nvim-treesitter.configs'.setup({
     additional_vim_regex_highlighting = false
   },
 })
+
+vim.keymap.set('n', '<leader>it', function()
+  vim.treesitter.inspect_tree()
+end, { desc = 'Open treesitter playground for current buffer' })
