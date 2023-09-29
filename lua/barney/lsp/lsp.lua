@@ -42,11 +42,11 @@ null_ls.setup({
   debug = false,
 })
 local null_ls_sources = {
-    null_ls.builtins.diagnostics.eslint_d.with({
-        cwd = function(params)
-            return require('lspconfig.util').root_pattern('tsconfig.json')(params.bufname)
-        end,
-    }),
+    -- null_ls.builtins.diagnostics.eslint_d.with({
+    --     cwd = function(params)
+    --         return require('lspconfig.util').root_pattern('tsconfig.json')(params.bufname)
+    --     end,
+    -- }),
 }
 null_ls.register({ sources = null_ls_sources })
 mason_lspconfig.setup({})

@@ -1,10 +1,19 @@
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = {
     '*.tf',
+    '*.tfbackend',
     '*.tfvars',
   },
-  callback = function()
+  callback = function(buf)
     vim.bo.filetype = 'terraform'
+    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = buf.buf,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
   end
 })
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {

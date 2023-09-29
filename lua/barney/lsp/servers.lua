@@ -5,4 +5,11 @@ return {
       telemetry = { enable = false },
     },
   },
+  tsserver = {
+    diagnostics = {
+      ignoredCodes = {
+        6192,
+      },
+    },
+  },
 }

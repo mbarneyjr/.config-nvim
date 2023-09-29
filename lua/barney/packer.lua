@@ -34,6 +34,16 @@ require('packer').startup(function(use)
       { 'j-hui/fidget.nvim', tag = 'legacy' },
       'jay-babu/mason-null-ls.nvim',
       'jay-babu/mason-nvim-dap.nvim',
+      {
+        'mxsdev/nvim-dap-vscode-js',
+        requires = {
+          {
+            'microsoft/vscode-js-debug',
+            opt = true,
+            run = 'npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out',
+          },
+        },
+      },
       'jose-elias-alvarez/null-ls.nvim',
       'mfussenegger/nvim-dap',
       'rcarriga/nvim-dap-ui',
@@ -63,14 +73,6 @@ require('packer').startup(function(use)
   -- which key
   use('folke/which-key.nvim')
   -- misc plugins
-  use({
-    'edluffy/hologram.nvim',
-    config = function()
-      require('hologram').setup({
-        auto_display = true,
-      })
-    end,
-  })
   use({
     'windwp/nvim-autopairs',
     config = function()

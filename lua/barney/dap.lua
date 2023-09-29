@@ -1,10 +1,49 @@
 local dap = require('dap')
+local dap_utils = require('dap.utils')
 local mason_nvim_dap = require('mason-nvim-dap')
+local dap_vscode_js = require('dap-vscode-js')
 
 mason_nvim_dap.setup({
-  automatic_setup = true,
+  automatic_installation = true,
+  ensure_installed = {
+  },
+  handlers = {
+    function(config)
+      require('mason-nvim-dap').default_setup(config)
+    end,
+  },
 })
-mason_nvim_dap.setup({})
+
+dap_vscode_js.setup({
+  adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
+})
+dap.configurations.javascript = {
+  {
+    type = 'pwa-node',
+    request = 'launch',
+    name = 'JS: Launch file',
+    program = '${file}',
+    cwd = '${workspaceFolder}',
+  },
+  {
+    type = 'pwa-node',
+    request = 'attach',
+    name = 'JS: Attach',
+    processId = function()
+      return dap_utils.pick_process({
+        filter = '--inspect',
+      })
+    end,
+    cwd = '${workspaceFolder}',
+  },
+}
+
+-- set custom signs
+vim.fn.sign_define('DapBreakpoint', { text='🔴', texthl='', linehl='', numhl='' })
+vim.fn.sign_define('DapBreakpointCondition', { text='🔵', texthl='', linehl='', numhl='' })
+vim.fn.sign_define('DapLogPoint', { text='🪵', texthl='', linehl='', numhl='' })
+vim.fn.sign_define('DapStopped', { text='👉', texthl='', linehl='', numhl='' })
+vim.fn.sign_define('DapBreakpointRejected', { text='❎', texthl='', linehl='', numhl='' })
 
 -- create a keymap to add a breakpoint
 vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'toggle [d]e[b]ugger breakpoint' })
@@ -15,7 +54,7 @@ vim.keymap.set('n', '<leader>dO', function() require('dap').step_out() end, { de
 vim.keymap.set('n', '<Leader>dl', function()
   require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
 end, { desc = 'debugger [l]og point' })
-vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end, { desc = 'debugger [r]epl' })
+vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.toggle() end, { desc = 'debugger [r]epl' })
 -- vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
 vim.keymap.set({'n', 'v'}, '<leader>dh', function()
   require('dap.ui.widgets').hover()
