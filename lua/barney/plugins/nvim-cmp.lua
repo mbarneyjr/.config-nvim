@@ -7,6 +7,7 @@ return {
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
     "rafamadriz/friendly-snippets",
+    "zbirenbaum/copilot-cmp",
   },
   config = function()
     local cmp = require("cmp")
@@ -35,6 +36,7 @@ return {
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
+        { name = "copilot" },
         { name = "luasnip" },
         { name = "buffer" },
         { name = "path" },
@@ -42,5 +44,6 @@ return {
       ---@diagnostic disable-next-line: missing-fields
       -- window = { completion = { border = "rounded" } },
     })
+    require("copilot_cmp").setup()
   end,
 }
