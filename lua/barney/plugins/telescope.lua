@@ -32,5 +32,6 @@ return {
 
     key.nmap("<leader>ff", find_files, "[f]ind [f]iles")
     key.nmap("<leader>fs", builtin.live_grep, "[f]ind grep [s]earch")
+    key.nmap("<C-p>", builtin.commands, "Open commands")
   end,
 }
