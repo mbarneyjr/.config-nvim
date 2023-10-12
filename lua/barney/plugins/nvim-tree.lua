@@ -12,6 +12,8 @@ return {
     nvim_tree.setup({
       view = {
         signcolumn = "auto",
+        adaptive_size = {},
+        side = "right",
       },
       renderer = {
         add_trailing = true,

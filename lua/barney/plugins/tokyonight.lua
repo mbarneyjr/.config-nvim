@@ -5,6 +5,9 @@ return {
   opts = { style = "night" },
   config = function()
     require("tokyonight").setup({
+      on_colors = function(colors)
+        colors.border = "#565f89"
+      end,
       styles = {
         -- Style to be applied to different syntax groups
         -- Value is any valid attr-list value for `:help nvim_set_hl`

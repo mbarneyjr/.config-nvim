@@ -9,17 +9,37 @@ return {
         icons_enabled = false,
         component_separators = "|",
         section_separators = "",
+        theme = "tokyonight",
       },
       sections = {
         lualine_a = { "mode" },
-        lualine_b = { "branch" },
-        lualine_c = { { "filename", path = 1, file_status = true } },
+        lualine_b = { { "filename", path = 1, file_status = true } },
+        lualine_c = { "branch" },
         lualine_x = {
+          { "diagnostics" },
+          { "diff" },
+        },
+        lualine_y = {
           { lazy_status.updates, cond = lazy_status.has_updates },
           { "encoding" },
           { "fileformat" },
         },
-        lualine_y = { "filetype" },
+        lualine_z = { "filetype" },
+      },
+      inactive_sections = {
+        lualine_a = { "mode" },
+        lualine_b = { { "filename", path = 1, file_status = true } },
+        lualine_c = { "branch" },
+        lualine_x = {
+          { "diagnostics" },
+          { "diff" },
+        },
+        lualine_y = {
+          { lazy_status.updates, cond = lazy_status.has_updates },
+          { "encoding" },
+          { "fileformat" },
+        },
+        lualine_z = { "filetype" },
       },
     })
   end,
