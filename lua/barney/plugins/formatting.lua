@@ -16,12 +16,18 @@ return {
         ["*"] = { "hrim_whitespace" },
       },
 
-      format_on_save = {
-        -- These options will be passed to conform.format()
-        -- async = false,
-        timeout_ms = 500,
-        lsp_fallback = true,
-      },
+      format_on_save = function(bufnr)
+        -- Disable with a global or buffer-local variable
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
+        -- Disable autoformat for files in a certain path
+        local bufname = vim.api.nvim_buf_get_name(bufnr)
+        if bufname:match("/node_modules/") then
+          return
+        end
+        return { timeout_ms = 500, lsp_fallback = true }
+      end,
     })
 
     local format = function()
@@ -31,7 +37,23 @@ return {
         timeout_ms = 500,
       })
     end
+    vim.api.nvim_create_user_command("Format", format, { desc = "Format buffer with Conform" })
     key.nmap("<c-f>", format, "[f]ormat code")
-    key.vmap("<c-f>", format, "[f]ormat code")
+
+    local toggle_formatting = function()
+      if vim.g.disable_autoformat == true then
+        vim.g.disable_autoformat = false
+        vim.notify("Autoformatting enabled")
+      else
+        vim.g.disable_autoformat = true
+        vim.notify("Autoformatting disabled")
+      end
+    end
+    vim.api.nvim_create_user_command(
+      "AutoFormattingToggle",
+      toggle_formatting,
+      { desc = "Toggle Conform autoformatting" }
+    )
+    key.nmap("<leader>ft", toggle_formatting, "[t]oggle auto[f]ormatting")
   end,
 }
