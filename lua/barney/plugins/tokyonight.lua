@@ -2,12 +2,9 @@ return {
   "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
-  opts = { style = "night" },
   config = function()
+    local key = require("barney.lib.keymap")
     require("tokyonight").setup({
-      on_colors = function(colors)
-        colors.border = "#565f89"
-      end,
       styles = {
         -- Style to be applied to different syntax groups
         -- Value is any valid attr-list value for `:help nvim_set_hl`
@@ -22,6 +19,15 @@ return {
       dim_inactive = true, -- dims inactive windows
       lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
     })
-    vim.cmd.colorscheme("tokyonight")
+    vim.o.background = "dark"
+    vim.cmd.colorscheme("tokyonight-night")
+    function swap_colorscheme()
+      if vim.o.background == "light" then
+        vim.o.background = "dark"
+      else
+        vim.o.background = "light"
+      end
+    end
+    key.nmap("<leader>cs", swap_colorscheme, "[c]olor [s]wap")
   end,
 }
