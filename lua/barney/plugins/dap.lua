@@ -33,26 +33,29 @@ return {
       },
     })
 
-    dap.configurations.javascript = {
-      {
-        type = "pwa-node",
-        request = "launch",
-        name = "JS: Launch file",
-        program = "${file}",
-        cwd = "${workspaceFolder}",
-      },
-      {
-        type = "pwa-node",
-        request = "attach",
-        name = "JS: Attach",
-        processId = function()
-          return dap_utils.pick_process({
-            filter = "--inspect",
-          })
-        end,
-        cwd = "${workspaceFolder}",
-      },
-    }
+    for _, lang in ipairs({ "javascript", "typescript" }) do
+      dap.configurations[lang] = {
+        {
+          type = "pwa-node",
+          request = "launch",
+          name = "JS: Launch file",
+          program = "${file}",
+          cwd = "${workspaceFolder}",
+        },
+        {
+          type = "pwa-node",
+          request = "attach",
+          name = "JS: Attach",
+          processId = function()
+            return dap_utils.pick_process({
+              filter = "--inspect",
+            })
+          end,
+          cwd = "${workspaceFolder}",
+        },
+      }
+    end
+
     require("dapui").setup({
       -- simple icons
       controls = {
@@ -72,6 +75,16 @@ return {
         expanded = "▾",
         collapsed = "▸",
         current_frame = "●",
+      },
+      layouts = {
+        {
+          elements = {
+            { id = "repl", size = 0.5 },
+            { id = "scopes", size = 0.5 },
+          },
+          position = "bottom",
+          size = 20,
+        },
       },
     })
 
