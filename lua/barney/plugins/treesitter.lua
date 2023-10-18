@@ -4,6 +4,7 @@ return {
   build = ":TSUpdate",
   dependencies = {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    "nvim-treesitter/playground",
     "windwp/nvim-ts-autotag",
   },
   config = function()
@@ -56,6 +57,9 @@ return {
           scope_incremental = false,
           node_decremental = "<bs>",
         },
+      },
+      playground = {
+        enable = true,
       },
     })
 
