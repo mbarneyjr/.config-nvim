@@ -15,9 +15,7 @@ return {
 
     require("luasnip.loaders.from_vscode").lazy_load()
 
-    ---@diagnostic disable-next-line: missing-fields
     cmp.setup({
-      ---@diagnostic disable-next-line: missing-fields
       completion = { completeopt = "menu,menuone,preview,noselect" },
       snippet = {
         expand = function(args)
@@ -41,8 +39,10 @@ return {
         { name = "buffer" },
         { name = "path" },
       }),
-      ---@diagnostic disable-next-line: missing-fields
-      -- window = { completion = { border = "rounded" } },
+      window = {
+        completion = { border = "rounded" },
+        documentation = { border = "rounded" },
+      },
     })
     require("copilot_cmp").setup()
   end,
