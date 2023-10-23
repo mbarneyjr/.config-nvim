@@ -14,6 +14,11 @@ return {
 
     telescope.setup({
       defaults = {
+        file_ignore_patterns = {
+          "node_modules",
+          ".git",
+          "cdk.out",
+        },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous,
@@ -27,7 +32,10 @@ return {
     telescope.load_extension("fzf")
 
     local function find_files()
-      builtin.find_files({ hidden = true, no_ignore = true })
+      builtin.find_files({
+        hidden = true,
+        no_ignore = true,
+      })
     end
 
     key.nmap("<leader>ff", find_files, "[f]ind [f]iles")
