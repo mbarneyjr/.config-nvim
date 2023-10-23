@@ -7,8 +7,8 @@ return {
     local key = require("barney.lib.keymap")
 
     lint.linters_by_ft = {
-      javascript = { "eslint_d" },
-      typescript = { "eslint_d" },
+      -- javascript = { "eslint_d" },
+      -- typescript = { "eslint_d" },
       ["yaml.cloudformation"] = { "cfn_lint" },
       yaml = { "actionlint" },
     }

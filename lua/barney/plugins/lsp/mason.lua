@@ -65,6 +65,7 @@ return {
       ensure_installed = {
         "prettier",
         "stylua",
+        "eslint-lsp",
         "eslint_d",
       },
     })
