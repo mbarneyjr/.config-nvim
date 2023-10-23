@@ -33,11 +33,11 @@ return {
         ["<C-n>"] = cmp.mapping.scroll_docs(4),
       }),
       sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "copilot" },
-        { name = "luasnip" },
-        { name = "buffer" },
-        { name = "path" },
+        { name = "nvim_lsp", priority = 100 },
+        { name = "path", priority = 90 },
+        { name = "copilot", priority = 70 },
+        { name = "luasnip", priority = 50 },
+        { name = "buffer", priority = 10 },
       }),
       window = {
         completion = { border = "rounded" },
