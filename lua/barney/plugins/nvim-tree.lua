@@ -10,6 +10,10 @@ return {
     local api = require("nvim-tree.api")
 
     nvim_tree.setup({
+      notify = {
+        threshold = vim.log.levels.WARN,
+        absolute_path = true,
+      },
       view = {
         signcolumn = "auto",
         adaptive_size = {},
