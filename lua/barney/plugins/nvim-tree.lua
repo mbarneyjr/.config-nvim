@@ -9,7 +9,13 @@ return {
     local nvim_tree = require("nvim-tree")
     local api = require("nvim-tree.api")
 
+    local function on_attach(bufnr)
+      api.config.mappings.default_on_attach(bufnr)
+      vim.keymap.del("n", "<C-K>", { buffer = bufnr })
+    end
+
     nvim_tree.setup({
+      on_attach = on_attach,
       notify = {
         threshold = vim.log.levels.WARN,
         absolute_path = true,

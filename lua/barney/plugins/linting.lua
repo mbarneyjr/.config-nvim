@@ -25,6 +25,5 @@ return {
     })
 
     key.nmap("<leader>l", try_lint, "[l]int")
-    key.nmap("<c-l>", try_lint, "[l]int")
   end,
 }
