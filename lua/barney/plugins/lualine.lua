@@ -21,8 +21,7 @@ return {
         },
         lualine_y = {
           { lazy_status.updates, cond = lazy_status.has_updates },
-          { "encoding" },
-          { "fileformat" },
+          { "location" },
         },
         lualine_z = { "filetype" },
       },
