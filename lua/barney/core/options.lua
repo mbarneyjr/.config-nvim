@@ -32,3 +32,12 @@ vim.g.do_filetype_lua = true
 vim.g.did_load_filetypes = false
 
 vim.o.exrc = true
+
+-- set tabs to be visible with white vertical line to the left
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = "⎸ ",
+  trail = "·",
+  extends = "»",
+  precedes = "«",
+}
