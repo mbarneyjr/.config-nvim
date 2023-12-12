@@ -12,3 +12,9 @@ key.nmap("<c-_>", "<cmd>noh<cr>", "Clear search highlight")
 
 -- keymap leader w to toggle wrap
 key.nmap("<leader>w", "<cmd>set wrap!<CR>", "Toggle wrap")
+
+-- quickfixlist keymaps
+key.nmap("<leader>qo", "<cmd>copen<CR>", "Open quickfix list")
+key.nmap("<leader>qc", "<cmd>cclose<CR>", "Close quickfix list")
+key.nmap("<leader>qn", "<cmd>cnext<CR>", "Next quickfix item")
+key.nmap("<leader>qp", "<cmd>cprev<CR>", "Previous quickfix item")
