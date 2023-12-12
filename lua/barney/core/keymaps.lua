@@ -8,4 +8,7 @@ key.nmap("<leader>sh", "<C-w>s", "Split window horizontally")
 key.nmap("<leader>se", "<C-w>=", "Make splits equal size")
 key.nmap("<leader>sx", "<cmd>close<CR>", "Close current split")
 
-vim.keymap.set("n", "<c-_>", "<cmd>noh<cr>", { desc = "clear search highlight" })
+key.nmap("<c-_>", "<cmd>noh<cr>", "Clear search highlight")
+
+-- keymap leader w to toggle wrap
+key.nmap("<leader>w", "<cmd>set wrap!<CR>", "Toggle wrap")
