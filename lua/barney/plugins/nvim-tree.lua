@@ -25,6 +25,11 @@ return {
         adaptive_size = {},
         side = "right",
       },
+      filesystem_watchers = {
+        enable = true,
+        debounce_delay = 50,
+        ignore_dirs = { "node_modules", ".git" },
+      },
       renderer = {
         add_trailing = true,
         special_files = {},
@@ -93,6 +98,16 @@ return {
         no_buffer = false,
         custom = {},
         exclude = {},
+      },
+      log = {
+        enable = true,
+        truncate = true,
+        types = {
+          diagnostics = true,
+          git = true,
+          profile = true,
+          watcher = true,
+        },
       },
     })
 
