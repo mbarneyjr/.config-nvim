@@ -22,6 +22,9 @@ return {
         "dotls",
         "jsonls",
         "terraformls",
+        "pyright",
+        "gopls",
+        "templ",
       },
       automatic_installation = true,
     })
@@ -48,10 +51,19 @@ return {
     mason_lspconfig.setup_handlers({
       function(server_name)
         local default_capabilities = cmp_nvim_lsp.default_capabilities()
+
         local capabilities = vim.tbl_extend(
           "force",
           default_capabilities,
-          lsp_settings[server_name] and lsp_settings[server_name].capabilities or {}
+          lsp_settings[server_name] and lsp_settings[server_name].capabilities or {},
+          -- fsevents high cpu bug
+          {
+            workspace = {
+              didChangeWatchedFiles = {
+                dynamicRegistration = false,
+              },
+            },
+          }
         )
         lspconfig[server_name].setup({
           capabilities = capabilities,
@@ -71,6 +83,9 @@ return {
     })
 
     vim.filetype.add({
+      extension = {
+        jsonl = "json",
+      },
       pattern = {
         [".*"] = {
           priority = math.huge,
