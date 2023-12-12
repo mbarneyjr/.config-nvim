@@ -7,7 +7,7 @@ return {
       "mxsdev/nvim-dap-vscode-js",
       opts = {
         debugger_path = string.format("%s/vscode-js-debug/", vim.fn.stdpath("data") .. "/lazy"),
-        adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+        adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost", "node" },
       },
     },
     {
@@ -22,6 +22,7 @@ return {
     local widgets = require("dap.ui.widgets")
     local mason_nvim_dap = require("mason-nvim-dap")
     local key = require("barney.lib.keymap")
+    local vscode = require("dap.ext.vscode")
 
     mason_nvim_dap.setup({
       automatic_installation = true,
@@ -55,6 +56,10 @@ return {
         },
       }
     end
+    vscode.load_launchjs(nil, {
+      ["pwa-node"] = { "javascript", "typescript" },
+      ["node"] = { "javascript", "typescript" },
+    })
 
     require("dapui").setup({
       -- simple icons
