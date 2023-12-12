@@ -14,7 +14,7 @@ return {
     -- configure treesitter
     treesitter.setup({ -- enable syntax highlighting
       context_commentstring = {
-        enable = true,
+        enable = false,
         enable_autocmd = false,
       },
       highlight = {
