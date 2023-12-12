@@ -9,11 +9,13 @@ return {
         lua = { "stylua" },
         javascript = { "prettier" },
         typescript = { "prettier" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
         markdown = { "prettier" },
         terraform = { "terraform_fmt" },
-        ["*"] = { "hrim_whitespace" },
+        ["*"] = { "trim_whitespace" },
       },
 
       format_on_save = function(bufnr)
