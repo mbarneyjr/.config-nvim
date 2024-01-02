@@ -3,6 +3,7 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
+    "marilari88/twoslash-queries.nvim",
   },
   config = function()
     local lspconfig = require("lspconfig")

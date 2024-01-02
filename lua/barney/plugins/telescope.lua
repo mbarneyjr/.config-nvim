@@ -17,6 +17,9 @@ return {
         file_ignore_patterns = {
           "node_modules",
           ".git/",
+          "*.terraform/",
+          "docs/images/",
+          "coverage",
           "cdk.out",
         },
         mappings = {

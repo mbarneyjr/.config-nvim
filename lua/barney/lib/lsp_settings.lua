@@ -17,7 +17,8 @@ return {
         },
       },
     },
-    on_attach = function(client)
+    on_attach = function(client, bufnr)
+      require("twoslash-queries").attach(client, bufnr)
       client.server_capabilities.documentFormattingProvider = false
     end,
   },
