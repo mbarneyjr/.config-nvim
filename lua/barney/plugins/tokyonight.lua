@@ -20,7 +20,7 @@ return {
       lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
     })
     vim.o.background = "dark"
-    vim.cmd.colorscheme("tokyonight-night")
+    vim.cmd.colorscheme("tokyonight-storm")
     local swap_colorscheme = function()
       if vim.o.background == "light" then
         vim.o.background = "dark"
