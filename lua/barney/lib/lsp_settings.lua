@@ -1,13 +1,4 @@
 return {
-  lua_ls = {
-    settings = {
-      Lua = {
-        workspace = { checkThirdParty = false },
-        telemetry = { enable = false },
-        completion = { callSnippet = "Replace" },
-      },
-    },
-  },
   tsserver = {
     settings = {
       diagnostics = {

@@ -4,8 +4,10 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     "marilari88/twoslash-queries.nvim",
+    { "folke/neodev.nvim", config = true },
   },
   config = function()
+    local neodev = require("neodev")
     local lspconfig = require("lspconfig")
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
@@ -35,24 +37,12 @@ return {
 
     local configs = require("lspconfig.configs")
 
-    if not configs["cfn-lsp-extra"] then
-      configs["cfn-lsp-extra"] = {
-        default_config = {
-          cmd = { "cfn-lsp-extra" },
-          filetypes = { "yaml.cloudformation", "json.cloudformation" },
-          root_dir = function(fname)
-            return lspconfig.util.find_git_ancestor(fname)
-          end,
-          settings = { validate = false },
-        },
-      }
-    end
-    lspconfig["cfn-lsp-extra"].setup({})
+    neodev.setup()
 
+    -- setup mason-managed servers
     mason_lspconfig.setup_handlers({
       function(server_name)
         local default_capabilities = cmp_nvim_lsp.default_capabilities()
-
         local capabilities = vim.tbl_extend(
           "force",
           default_capabilities,
@@ -83,6 +73,20 @@ return {
       },
     })
 
+    -- setup cfn-lsp-extra
+    if not configs["cfn-lsp-extra"] then
+      configs["cfn-lsp-extra"] = {
+        default_config = {
+          cmd = { "cfn-lsp-extra" },
+          filetypes = { "yaml.cloudformation", "json.cloudformation" },
+          root_dir = function(fname)
+            return lspconfig.util.find_git_ancestor(fname)
+          end,
+          settings = { validate = false },
+        },
+      }
+    end
+    lspconfig["cfn-lsp-extra"].setup({})
     vim.filetype.add({
       extension = {
         jsonl = "json",
