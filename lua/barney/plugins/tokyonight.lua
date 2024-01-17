@@ -21,7 +21,7 @@ return {
     })
     vim.o.background = "dark"
     vim.cmd.colorscheme("tokyonight-night")
-    function swap_colorscheme()
+    local swap_colorscheme = function()
       if vim.o.background == "light" then
         vim.o.background = "dark"
       else
