@@ -50,6 +50,6 @@
   "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" },
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
   "vim-tmux-navigator": { "branch": "master", "commit": "38b1d0402c4600543281dc85b3f51884205674b6" },
-  "vscode-js-debug": { "branch": "main", "commit": "4537332412f60fd920f60da629bb472615c0c53b" },
+  "vscode-js-debug": { "branch": "main", "commit": "d5c3db44de45bb3175c22f14fd36fffba1efcdf9" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" }
 }

@@ -40,7 +40,7 @@ return {
       })
     end
     vim.api.nvim_create_user_command("Format", format, { desc = "Format buffer with Conform" })
-    key.nmap("<c-f>", format, "[f]ormat code")
+    key.nmap("<leader>cf", format, "[code] [f]ormatter")
 
     local toggle_formatting = function()
       if vim.g.disable_autoformat == true then
