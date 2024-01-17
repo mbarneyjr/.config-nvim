@@ -6,11 +6,29 @@ return {
     local lint = require("lint")
     local key = require("barney.lib.keymap")
 
+    -- define github actions file type
+    vim.filetype.add({
+      extension = {
+        jsonl = "json",
+      },
+      pattern = {
+        [".*"] = {
+          priority = math.huge,
+          function(_, bufnr)
+            local path = vim.api.nvim_buf_get_name(bufnr)
+            vim.print(path)
+            if string.find(path, ".github/") then
+              return "yaml.github_actions"
+            end
+          end,
+        },
+      },
+    })
     lint.linters_by_ft = {
       -- javascript = { "eslint_d" },
       -- typescript = { "eslint_d" },
       ["yaml.cloudformation"] = { "cfn_lint" },
-      yaml = { "actionlint" },
+      ["yaml.github_actions"] = { "actionlint" },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
