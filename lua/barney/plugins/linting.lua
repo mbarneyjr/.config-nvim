@@ -7,23 +7,7 @@ return {
     local key = require("barney.lib.keymap")
 
     -- define github actions file type
-    vim.filetype.add({
-      extension = {
-        jsonl = "json",
-      },
-      pattern = {
-        [".*"] = {
-          priority = math.huge,
-          function(_, bufnr)
-            local path = vim.api.nvim_buf_get_name(bufnr)
-            vim.print(path)
-            if string.find(path, ".github/") then
-              return "yaml.github_actions"
-            end
-          end,
-        },
-      },
-    })
+    vim.filetype.add({})
     lint.linters_by_ft = {
       -- javascript = { "eslint_d" },
       -- typescript = { "eslint_d" },
