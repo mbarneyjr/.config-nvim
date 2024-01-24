@@ -3,6 +3,8 @@ return {
   dependencies = {
     "rcarriga/nvim-dap-ui",
     "jay-babu/mason-nvim-dap.nvim",
+    "theHamsta/nvim-dap-virtual-text",
+    "nvim-telescope/telescope-dap.nvim",
     {
       "mxsdev/nvim-dap-vscode-js",
       opts = {
@@ -23,6 +25,10 @@ return {
     local mason_nvim_dap = require("mason-nvim-dap")
     local key = require("barney.lib.keymap")
     local vscode = require("dap.ext.vscode")
+    local dap_virtual_text = require("nvim-dap-virtual-text")
+    local telescope = require("telescope")
+
+    telescope.load_extension("dap")
 
     mason_nvim_dap.setup({
       automatic_installation = true,
@@ -93,6 +99,8 @@ return {
       },
     })
 
+    dap_virtual_text.setup()
+
     -- set custom signs
     vim.fn.sign_define(
       "DapBreakpoint",
@@ -125,8 +133,9 @@ return {
     key.nmap("<leader>db", dap.toggle_breakpoint, "toggle [d]ebugger [b]reakpoint")
     key.nmap("<leader>dL", log_breakpoint, "toggle [d]ebugger [L]og breakpoint")
     key.nmap("<leader>dc", dap.continue, "[d]ebugger [c]ontinue")
+    key.nmap("<leader>dC", dap.clear_breakpoints, "[d]ebugger [C]lear breakpoints")
+    key.nmap("<leader>dn", dap.run_to_cursor, "[d]ebugger ru[n] to cursor")
     key.nmap("<leader>do", dap.step_over, "[d]ebugger step [o]ver")
-    key.nmap("<leader>di", dap.step_into, "[d]ebugger step [i]nto")
     key.nmap("<leader>di", dap.step_into, "[d]ebugger step [i]nto")
     key.nmap("<leader>dO", dap.step_out, "[d]ebugger step [O]ut")
     key.nmap("<Leader>dr", dap.repl.toggle, "[d]ebugger [r]epl")
