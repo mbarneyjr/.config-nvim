@@ -90,11 +90,17 @@ return {
       layouts = {
         {
           elements = {
-            { id = "repl", size = 0.5 },
-            { id = "scopes", size = 0.5 },
+            { id = "scopes", size = 1 },
           },
+          size = 0.33,
+          position = "right",
+        },
+        {
+          elements = {
+            { id = "repl", size = 1 },
+          },
+          size = 0.27,
           position = "bottom",
-          size = 20,
         },
       },
     })
@@ -141,6 +147,7 @@ return {
     key.nmap("<Leader>dr", dap.repl.toggle, "[d]ebugger [r]epl")
     key.nmap("<leader>dh", widgets.hover, "[d]ebug [h]over")
     key.nmap("<leader>dH", widgets.preview, "[d]ebug [p]review")
+    key.nmap("<leader>df", dapui.float_element, "[d]ebug ui [f]float")
     key.nmap("<leader>du", dapui.toggle, { desc = "toggle [d]ebgger [u]ser interface" })
   end,
 }
