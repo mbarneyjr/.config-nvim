@@ -10,6 +10,7 @@ return {
         component_separators = "|",
         section_separators = "",
         theme = "tokyonight",
+        globalstatus = true,
       },
       sections = {
         lualine_a = { "mode" },
