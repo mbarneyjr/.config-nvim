@@ -29,7 +29,6 @@ return {
     local telescope = require("telescope")
 
     telescope.load_extension("dap")
-
     mason_nvim_dap.setup({
       automatic_installation = true,
       ensure_installed = {},
@@ -40,28 +39,48 @@ return {
       },
     })
 
-    for _, lang in ipairs({ "javascript", "typescript" }) do
-      dap.configurations[lang] = {
-        {
-          type = "pwa-node",
-          request = "launch",
-          name = "JS: Launch file",
-          program = "${file}",
-          cwd = "${workspaceFolder}",
-        },
-        {
-          type = "pwa-node",
-          request = "attach",
-          name = "JS: Attach",
-          processId = function()
-            return dap_utils.pick_process({
-              filter = "--inspect",
-            })
-          end,
-          cwd = "${workspaceFolder}",
-        },
-      }
-    end
+    dap.configurations.javascript = {
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "JS: Launch file",
+        program = "${file}",
+        cwd = "${workspaceFolder}",
+      },
+      {
+        type = "pwa-node",
+        request = "attach",
+        name = "JS: Attach",
+        processId = function()
+          return dap_utils.pick_process({
+            filter = "--inspect",
+          })
+        end,
+        cwd = "${workspaceFolder}",
+      },
+    }
+    dap.configurations.typescript = {
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "TS: Launch file",
+        program = "${file}",
+        runtimeArgs = { "--require", "ts-node/register" },
+        cwd = "${workspaceFolder}",
+      },
+      {
+        type = "pwa-node",
+        request = "attach",
+        name = "TS: Attach",
+        processId = function()
+          return dap_utils.pick_process({
+            filter = "--inspect",
+          })
+        end,
+        cwd = "${workspaceFolder}",
+      },
+    }
+
     vscode.load_launchjs(nil, {
       ["pwa-node"] = { "javascript", "typescript" },
       ["node"] = { "javascript", "typescript" },
@@ -92,7 +111,7 @@ return {
           elements = {
             { id = "scopes", size = 1 },
           },
-          size = 0.33,
+          size = 0.25,
           position = "right",
         },
         {
